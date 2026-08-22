@@ -1,0 +1,184 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  min-height: 580px;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+.heroSkeleton {
+  width: 100%;
+  height: 90vh;
+  min-height: 580px;
+  background: linear-gradient(90deg, #1a1a1a 25%, #222 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  will-change: transform, opacity;
+}
+.gradientBottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 70%;
+  background: linear-gradient(to top, #141414 0%, #141414 10%, rgba(20,20,20,0.6) 60%, transparent 100%);
+}
+.gradientLeft {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(20,20,20,0.9) 0%, rgba(20,20,20,0.4) 50%, transparent 100%);
+}
+.gradientTop {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+}
+.content {
+  position: absolute;
+  bottom: 18%;
+  left: 4%;
+  width: 55%;
+  max-width: 680px;
+}
+.badge {
+  display: inline-block;
+  background: rgba(229,9,20,0.15);
+  border: 1px solid rgba(229,9,20,0.4);
+  color: #e50914;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+.title {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.meta span { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+.ratingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(245,197,24,0.12);
+  border: 1px solid rgba(245,197,24,0.3);
+  color: #f5c518 !important;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+}
+.typeBadge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem !important;
+}
+.overview {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 24px;
+  max-width: 520px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+}
+.actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.playBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e50914;
+  color: #fff;
+  padding: 13px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(229,9,20,0.4);
+  transition: background 0.2s;
+}
+.playBtn:hover { background: #f40612; }
+.infoBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  padding: 13px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s;
+}
+.infoBtn:hover { background: rgba(255,255,255,0.2); }
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px; height: 46px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s;
+  z-index: 10;
+}
+.arrow:hover { background: rgba(229,9,20,0.7); border-color: #e50914; }
+.arrowLeft { left: 2%; }
+.arrowRight { right: 2%; }
+.dots {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  border: none; cursor: pointer;
+  transition: all 0.3s;
+}
+.dotActive {
+  background: #e50914;
+  width: 24px;
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .hero { height: 75vh; }
+  .content { width: 90%; bottom: 16%; }
+  .title { font-size: 1.8rem; }
+  .overview { display: none; }
+}
