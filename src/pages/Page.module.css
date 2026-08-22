@@ -1,0 +1,103 @@
+.page {
+  padding-top: 90px;
+  padding-bottom: 60px;
+  min-height: 100vh;
+}
+.pageHeader {
+  padding: 0 4% 28px;
+}
+.pageTitle {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: #fff;
+}
+.resultCount {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: -18px;
+  margin-bottom: 20px;
+}
+.filterBar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.filterGroup label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  min-width: 60px;
+}
+.filterChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.65);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.chip:hover {
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  border-color: rgba(255,255,255,0.2);
+}
+.chipActive {
+  background: #e50914 !important;
+  border-color: #e50914 !important;
+  color: #fff !important;
+  box-shadow: 0 2px 12px rgba(229,9,20,0.35);
+}
+.select {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.select:hover { border-color: rgba(255,255,255,0.25); }
+.select option { background: #1f1f1f; }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 4% 0;
+}
+.pageBtn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pageBtn:hover:not(:disabled) { background: #e50914; border-color: #e50914; }
+.pageBtn:disabled { opacity: 0.3; cursor: not-allowed; }
+.pageInfo { font-size: 0.9rem; color: rgba(255,255,255,0.5); }
