@@ -1,0 +1,210 @@
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+.modal {
+  position: relative;
+  background: #181818;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.9);
+  border: 1px solid rgba(255,255,255,0.08);
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+.closeBtn {
+  position: absolute; top: 14px; right: 14px;
+  width: 34px; height: 34px;
+  background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 10;
+  transition: background 0.2s;
+}
+.closeBtn:hover { background: #e50914; border-color: #e50914; }
+/* loading */
+.loadingWrap {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 16px; padding: 80px 0; color: rgba(255,255,255,0.5);
+}
+.spinner {
+  width: 40px; height: 40px;
+  border: 3px solid rgba(255,255,255,0.1);
+  border-top-color: #e50914;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── DETAIL ── */
+.detailView { border-radius: 14px; overflow: hidden; }
+.backdrop { position: relative; width: 100%; height: 280px; overflow: hidden; }
+.backdrop img { width: 100%; height: 100%; object-fit: cover; }
+.backdropGrad {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(24,24,24,0) 0%, #181818 100%);
+}
+.detailBody {
+  display: flex; gap: 28px;
+  padding: 0 28px 32px;
+  margin-top: -80px;
+  position: relative; z-index: 1;
+}
+.posterWrap { flex-shrink: 0; }
+.poster {
+  width: 140px; aspect-ratio: 2/3;
+  object-fit: cover; border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+  border: 2px solid rgba(255,255,255,0.1);
+}
+.noPoster {
+  width: 140px; aspect-ratio: 2/3;
+  background: #2a2a2a; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+}
+.info { flex: 1; padding-top: 60px; }
+.title { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; }
+.meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; align-items: center; }
+.ratingBadge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(245,197,24,0.12); border: 1px solid rgba(245,197,24,0.3);
+  color: #f5c518; padding: 4px 10px; border-radius: 20px;
+  font-size: 0.82rem; font-weight: 700;
+}
+.metaItem {
+  display: inline-flex; align-items: center; gap: 5px;
+  color: rgba(255,255,255,0.6); font-size: 0.84rem;
+}
+.genres { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.genreBadge {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7); padding: 4px 10px; border-radius: 20px;
+  font-size: 0.75rem; font-weight: 500;
+}
+.overview { font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.75); margin-bottom: 20px; }
+/* cast */
+.castSection h4 { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.castList { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.castMember { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 54px; }
+.castMember img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.1); }
+.castMember span { font-size: 0.65rem; color: rgba(255,255,255,0.6); text-align: center; line-height: 1.2; }
+.castPlaceholder { width: 44px; height: 44px; border-radius: 50%; background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+/* pre picker */
+.prePicker { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.pickerRow { display: flex; align-items: center; gap: 8px; }
+.pickerRow label { font-size: 0.82rem; color: rgba(255,255,255,0.5); white-space: nowrap; }
+.select {
+  background: #2a2a2a; color: #fff; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px; padding: 6px 10px; font-size: 0.84rem; outline: none; cursor: pointer;
+  max-width: 200px;
+}
+.watchBtn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #e50914; color: #fff;
+  padding: 13px 30px; border-radius: 8px;
+  font-size: 1rem; font-weight: 700; border: none; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(229,9,20,0.4);
+  transition: background 0.2s;
+}
+.watchBtn:hover { background: #f40612; }
+
+/* ── PLAYER ── */
+.playerView { display: flex; flex-direction: column; height: 90vh; }
+.playerHeader {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 14px 18px;
+  background: #111;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  flex-shrink: 0;
+}
+.backBtn {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 0.84rem;
+  cursor: pointer; transition: background 0.2s; white-space: nowrap;
+}
+.backBtn:hover { background: rgba(255,255,255,0.15); }
+.playerTitle { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.8); flex: 1; }
+.serverTabs { display: flex; gap: 6px; }
+.serverBtn {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6); padding: 5px 12px; border-radius: 6px;
+  font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+}
+.serverBtn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+.serverActive { background: #e50914 !important; border-color: #e50914 !important; color: #fff !important; }
+.iframeWrap {
+  flex: 1;
+  position: relative;
+  background: #000;
+  min-height: 400px;
+}
+.iframeWrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* ── Ad-redirect blockers ─────────────────────────────────────────────────
+   These transparent strips sit ABOVE the iframe at the edges where embed
+   providers place their clickable ad banners. They block those clicks from
+   navigating away, while leaving the central video controls fully usable.  */
+.adStripTop {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 52px;
+  z-index: 2;
+  cursor: default;
+}
+.adStripBottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 52px;
+  z-index: 2;
+  cursor: default;
+}
+.adStripLeft {
+  position: absolute;
+  top: 52px; bottom: 52px; left: 0;
+  width: 40px;
+  z-index: 2;
+  cursor: default;
+}
+.adStripRight {
+  position: absolute;
+  top: 52px; bottom: 52px; right: 0;
+  width: 40px;
+  z-index: 2;
+  cursor: default;
+}
+
+/* ep controls */
+.epControls { padding: 14px 18px; background: #111; border-top: 1px solid rgba(255,255,255,0.07); }
+.seasonSelect { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.seasonBtn {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6); padding: 4px 10px; border-radius: 6px;
+  font-size: 0.78rem; cursor: pointer; transition: all 0.2s;
+}
+.seasonBtn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+.seasonActive { background: #e50914 !important; border-color: #e50914 !important; color: #fff !important; }
+.episodeGrid { display: flex; flex-wrap: wrap; gap: 6px; max-height: 100px; overflow-y: auto; }
+.epBtn {
+  width: 34px; height: 34px;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6); border-radius: 6px;
+  font-size: 0.78rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+}
+.epBtn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+.epActive { background: #e50914 !important; border-color: #e50914 !important; color: #fff !important; }
+.epsLoading { color: rgba(255,255,255,0.4); font-size: 0.84rem; padding: 10px 0; }
+
+@media (max-width: 600px) {
+  .detailBody { flex-direction: column; padding: 0 16px 24px; margin-top: -40px; }
+  .info { padding-top: 16px; }
+  .title { font-size: 1.3rem; }
+  .poster { width: 100px; }
+}
