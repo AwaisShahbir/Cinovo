@@ -1,0 +1,63 @@
+.section { padding: 16px 0 32px; }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4%;
+  margin-bottom: 14px;
+}
+.titleWrap { display: flex; align-items: center; gap: 10px; }
+.accentBar {
+  display: block;
+  width: 4px; height: 22px;
+  background: #e50914;
+  border-radius: 2px;
+}
+.title { font-size: 1.2rem; font-weight: 700; color: #fff; }
+.rowWrap { position: relative; }
+.row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px 4%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.row::-webkit-scrollbar { display: none; }
+.row > * { scroll-snap-align: start; }
+.arrow {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 40px; height: 70px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(20,20,20,0.85);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+}
+.arrow:hover { background: rgba(229,9,20,0.7); border-color: #e50914; }
+.left { left: 0; border-radius: 0 6px 6px 0; }
+.right { right: 0; border-radius: 6px 0 0 6px; }
+/* skeleton */
+.skeletonCard { flex-shrink: 0; width: 160px; }
+.skeletonPoster {
+  width: 100%; aspect-ratio: 2/3;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #1f1f1f 25%, #2a2a2a 50%, #1f1f1f 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+.skeletonTitle {
+  height: 12px; margin-top: 8px; border-radius: 4px; width: 70%;
+  background: linear-gradient(90deg, #1f1f1f 25%, #2a2a2a 50%, #1f1f1f 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
