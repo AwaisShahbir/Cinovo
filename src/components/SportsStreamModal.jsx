@@ -3,6 +3,17 @@ import { motion } from 'framer-motion';
 import { X, Trophy, RefreshCw, Radio, Shield, Volume2 } from 'lucide-react';
 import styles from './SportsStreamModal.module.css';
 
+function formatStreamUrl(rawUrl) {
+  if (!rawUrl) return '';
+  if (rawUrl.includes('youtube.com/embed') || rawUrl.includes('youtu.be')) {
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:5173';
+    let clean = rawUrl.replace('youtube.com/embed/', 'youtube-nocookie.com/embed/');
+    const separator = clean.includes('?') ? '&' : '?';
+    return `${clean}${separator}enablejsapi=1&origin=${encodeURIComponent(origin)}`;
+  }
+  return rawUrl;
+}
+
 export default function SportsStreamModal({ match, onClose }) {
   const [loading, setLoading] = useState(true);
   const [streamError, setStreamError] = useState(false);
@@ -24,11 +35,13 @@ export default function SportsStreamModal({ match, onClose }) {
 
   if (!match) return null;
 
-  const currentStreamUrl = activeServer === 1
+  const rawStream = activeServer === 1
     ? match.streamUrl
     : activeServer === 2
     ? match.backupUrl || match.streamUrl
     : match.server3 || match.streamUrl;
+
+  const currentStreamUrl = formatStreamUrl(rawStream);
 
   return (
     <motion.div

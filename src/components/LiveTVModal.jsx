@@ -3,6 +3,17 @@ import { motion } from 'framer-motion';
 import { X, Tv, RefreshCw, Radio, Volume2, Maximize2 } from 'lucide-react';
 import styles from './LiveTVModal.module.css';
 
+function formatStreamUrl(rawUrl) {
+  if (!rawUrl) return '';
+  if (rawUrl.includes('youtube.com/embed') || rawUrl.includes('youtu.be')) {
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:5173';
+    let clean = rawUrl.replace('youtube.com/embed/', 'youtube-nocookie.com/embed/');
+    const separator = clean.includes('?') ? '&' : '?';
+    return `${clean}${separator}enablejsapi=1&origin=${encodeURIComponent(origin)}`;
+  }
+  return rawUrl;
+}
+
 export default function LiveTVModal({ channel, allChannels = [], onClose, onSelectChannel }) {
   const [loading, setLoading] = useState(true);
   const [streamError, setStreamError] = useState(false);
@@ -24,10 +35,12 @@ export default function LiveTVModal({ channel, allChannels = [], onClose, onSele
 
   if (!channel) return null;
 
-  // Stream source URL logic
-  const streamUrl = activeServer === 1
+  // Stream source URL logic with origin formatting
+  const rawStream = activeServer === 1
     ? channel.streamUrl
     : channel.backupUrl || channel.streamUrl;
+
+  const streamUrl = formatStreamUrl(rawStream);
 
   return (
     <motion.div
