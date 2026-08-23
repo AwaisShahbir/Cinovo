@@ -56,6 +56,8 @@ export default function Navbar() {
     { to: '/tv',       label: 'TV Shows' },
     { to: '/anime',    label: 'Anime' },
     { to: '/manga',    label: 'Manga' },
+    { to: '/live-tv',  label: 'Live TV' },
+    { to: '/sports',   label: 'Live Sports' },
     { to: '/trending', label: 'Trending' },
   ];
 

@@ -8,6 +8,8 @@ import Movies from './pages/Movies';
 import TVShows from './pages/TVShows';
 import Anime from './pages/Anime';
 import Manga from './pages/Manga';
+import LiveTV from './pages/LiveTV';
+import LiveSports from './pages/LiveSports';
 import Trending from './pages/Trending';
 import SearchResults from './pages/SearchResults';
 import './styles/globals.css';
@@ -30,6 +32,8 @@ export default function App() {
           <Route path="/tv" element={<TVShows onOpenModal={openModal} />} />
           <Route path="/anime" element={<Anime onOpenModal={openModal} />} />
           <Route path="/manga" element={<Manga />} />
+          <Route path="/live-tv" element={<LiveTV />} />
+          <Route path="/sports" element={<LiveSports />} />
           <Route path="/trending" element={<Trending onOpenModal={openModal} />} />
           <Route path="/search" element={<SearchResults onOpenModal={openModal} />} />
         </Routes>
