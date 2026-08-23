@@ -1,7 +1,8 @@
 /**
- * CineStream Ad-Strip Proxy Server
- * Fetches embed provider HTML, removes all known ad/tracking scripts,
- * then serves clean HTML to the iframe in the React app.
+ * Cinovo Proxy Server
+ * 1. Ad-Strip Proxy — fetches embed HTML, removes ad/tracking scripts.
+ * 2. Jikan Proxy   — forwards Jikan (MyAnimeList) API calls server-side
+ *    to avoid browser rate-limit detection and CORS edge cases.
  */
 
 const express = require('express');
@@ -178,7 +179,43 @@ app.get('/asset', async (req, res) => {
   }
 });
 
+// ── Jikan (MyAnimeList) API Proxy ──────────────────────────────────────────────────
+// Forwards /jikan/* to https://api.jikan.moe/v4/*
+// This avoids CORS edge cases and allows server-side request management.
+app.get('/jikan/{*path}', async (req, res) => {
+  // Build the Jikan v4 path from the wildcard param
+  const jikanPath = '/' + (req.params.path || '');
+  const queryString = new URLSearchParams(req.query).toString();
+  const targetUrl = `https://api.jikan.moe/v4${jikanPath}${queryString ? '?' + queryString : ''}`;
+
+  try {
+    const response = await fetch(targetUrl, {
+      headers: {
+        'Accept': 'application/json',
+        'User-Agent': 'Cinovo/1.0 (streaming-site; educational project)',
+      },
+    });
+
+    if (response.status === 429) {
+      // Jikan rate limit — tell the client to retry after a delay
+      res.set('Retry-After', '2');
+      return res.status(429).json({ error: 'rate_limited', message: 'Jikan rate limit hit. Retry shortly.' });
+    }
+
+    const contentType = response.headers.get('content-type') || 'application/json';
+    const data = await response.json();
+
+    res.set('Content-Type', contentType);
+    res.set('Cache-Control', 'public, max-age=300'); // cache 5 min to reduce repeat requests
+    res.json(data);
+  } catch (err) {
+    console.error('[jikan proxy error]', err.message);
+    res.status(502).json({ error: 'proxy_error', message: err.message });
+  }
+});
+
 app.listen(PORT, () => {
-  console.log(`\n✅ CineProxy running at http://localhost:${PORT}`);
-  console.log(`   Stripping ads from embed providers before they reach your browser.\n`);
+  console.log(`\n✅ Cinovo Proxy running at http://localhost:${PORT}`);
+  console.log(`   📺 Ad-stripping active for embed providers.`);
+  console.log(`   📚 Jikan (MyAnimeList) proxy active at /jikan\n`);
 });

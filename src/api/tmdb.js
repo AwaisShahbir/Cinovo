@@ -53,6 +53,80 @@ export const getTVDetails = (id) =>
 export const getTVSeason = (id, seasonNum) =>
   tmdb.get(`/tv/${id}/season/${seasonNum}`);
 
+// ─── Anime ─────────────────────────────────────────────────────────────────
+// Anime = TV shows with Animation genre (16) + Japanese origin
+export const discoverAnime = (sortBy = 'popularity.desc', genreId = '', page = 1) =>
+  tmdb.get('/discover/tv', {
+    params: {
+      sort_by: sortBy,
+      with_genres: genreId ? `16,${genreId}` : '16',
+      with_original_language: 'ja',
+      page,
+    },
+  });
+
+export const getPopularAnime = (page = 1) =>
+  tmdb.get('/discover/tv', {
+    params: {
+      sort_by: 'popularity.desc',
+      with_genres: '16',
+      with_original_language: 'ja',
+      page,
+    },
+  });
+
+export const getTopRatedAnime = (page = 1) =>
+  tmdb.get('/discover/tv', {
+    params: {
+      sort_by: 'vote_average.desc',
+      with_genres: '16',
+      with_original_language: 'ja',
+      'vote_count.gte': 100,
+      page,
+    },
+  });
+
+// ─── Streaming Providers & Networks ──────────────────────────────────────────
+export const getMoviesByProvider = (providerId, page = 1) =>
+  tmdb.get('/discover/movie', {
+    params: {
+      with_watch_providers: providerId,
+      watch_region: 'US',
+      sort_by: 'popularity.desc',
+      page,
+    },
+  });
+
+export const getTVByProvider = (providerId, networkId, page = 1) =>
+  tmdb.get('/discover/tv', {
+    params: {
+      with_watch_providers: providerId || undefined,
+      with_networks: networkId || undefined,
+      watch_region: 'US',
+      sort_by: 'popularity.desc',
+      page,
+    },
+  });
+
+// ─── Production Companies / Studios ──────────────────────────────────────────
+export const getMoviesByCompany = (companyId, page = 1) =>
+  tmdb.get('/discover/movie', {
+    params: {
+      with_companies: companyId,
+      sort_by: 'popularity.desc',
+      page,
+    },
+  });
+
+export const getTVByCompany = (companyId, page = 1) =>
+  tmdb.get('/discover/tv', {
+    params: {
+      with_companies: companyId,
+      sort_by: 'popularity.desc',
+      page,
+    },
+  });
+
 // ─── Search ─────────────────────────────────────────────────────────────────
 export const searchMulti = (query, page = 1) =>
   tmdb.get('/search/multi', { params: { query, page } });

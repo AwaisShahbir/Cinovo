@@ -101,3 +101,62 @@
 .pageBtn:hover:not(:disabled) { background: #e50914; border-color: #e50914; }
 .pageBtn:disabled { opacity: 0.3; cursor: not-allowed; }
 .pageInfo { font-size: 0.9rem; color: rgba(255,255,255,0.5); }
+
+/* ── Anime Hero ── */
+.animeHero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.animeHeroGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(229,9,20,0.12) 0%, rgba(123,47,190,0.1) 50%, transparent 80%);
+  pointer-events: none;
+}
+.animeEmoji {
+  font-size: 3.5rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 20px rgba(229,9,20,0.5));
+}
+.pageTitleAnime {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 30%, #E50914 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.animeSubtitle {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Anime genre chips */
+.chipAnime {
+  background: rgba(229,9,20,0.08);
+  border: 1px solid rgba(229,9,20,0.2);
+  color: rgba(255,255,255,0.65);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.chipAnime:hover {
+  background: rgba(229,9,20,0.18);
+  border-color: rgba(229,9,20,0.5);
+  color: #fff;
+}
+.chipAnimeActive {
+  background: #e50914 !important;
+  border-color: #e50914 !important;
+  color: #fff !important;
+  box-shadow: 0 2px 12px rgba(229,9,20,0.4);
+}

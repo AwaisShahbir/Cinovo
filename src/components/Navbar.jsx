@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, Menu, Film } from 'lucide-react';
+import { Search, X, Menu } from 'lucide-react';
 import { searchMulti, getPosterUrl } from '../api/tmdb';
 import { useDebounce } from '../hooks/useDebounce';
 import styles from './Navbar.module.css';
@@ -51,9 +51,11 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/movies', label: 'Movies' },
-    { to: '/tv', label: 'TV Shows' },
+    { to: '/',         label: 'Home' },
+    { to: '/movies',   label: 'Movies' },
+    { to: '/tv',       label: 'TV Shows' },
+    { to: '/anime',    label: 'Anime' },
+    { to: '/manga',    label: 'Manga' },
     { to: '/trending', label: 'Trending' },
   ];
 
@@ -67,8 +69,32 @@ export default function Navbar() {
       <div className={styles.inner}>
         {/* Logo */}
         <Link to="/" className={styles.logo}>
-          <Film size={26} color="#e50914" />
-          <span>CineStream</span>
+          <svg width="30" height="30" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="navCg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#7B2FBE"/>
+                <stop offset="100%" stopColor="#E50914"/>
+              </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="14" fill="#0d0d0d"/>
+            <rect x="7" y="6" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="16" y="6" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="25" y="6" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="34" y="6" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="43" y="6" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="52" y="6" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="7" y="54" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="16" y="54" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="25" y="54" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="34" y="54" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="43" y="54" width="5" height="4" rx="1" fill="#222"/>
+            <rect x="52" y="54" width="5" height="4" rx="1" fill="#222"/>
+            <path d="M44 17 A18 18 0 1 0 44 47" stroke="url(#navCg)" strokeWidth="7" strokeLinecap="round" fill="none"/>
+            <polygon points="39,32 34,27 34,37" fill="url(#navCg)" opacity="0.9"/>
+          </svg>
+          <span className={styles.logoText}>
+            <span className={styles.logoC}>C</span>inovo
+          </span>
         </Link>
 
         {/* Desktop Nav Links */}

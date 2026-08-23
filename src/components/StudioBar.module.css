@@ -1,0 +1,116 @@
+/* ── Studios Container ── */
+.container {
+  padding: 10px 0 20px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4% 14px;
+}
+
+.titleWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accentDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7B2FBE, #E50914);
+  box-shadow: 0 0 10px rgba(123, 47, 190, 0.6);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.resetBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.resetBtn:hover {
+  background: rgba(229, 9, 20, 0.2);
+  border-color: rgba(229, 9, 20, 0.5);
+  color: #fff;
+}
+
+/* ── Single Line Horizontally Scrollable Row ── */
+.rowContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 10px 4% 16px;
+  width: 100%;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+.rowContainer::-webkit-scrollbar {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* ── Studio Card (White Card — Fixed Consistent Width & Height) ── */
+.card {
+  width: 155px;
+  height: 80px;
+  flex-shrink: 0; /* Prevents wrapping or shrinking — stays on 1 single line! */
+  background: #FFFFFF;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-family: inherit;
+  outline: none;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-sizing: border-box;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.35);
+  background: #FFFFFF;
+}
+
+.cardActive {
+  border-color: #E50914 !important;
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.5) !important;
+}
+
+.logoWrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoWrap svg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}

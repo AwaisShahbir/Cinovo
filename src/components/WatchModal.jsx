@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Star, Play, Calendar, Clock, Globe, ChevronDown } from 'lucide-react';
 import { getMovieDetails, getTVDetails, getTVSeason, getPosterUrl, getBackdropUrl, getStreamUrl } from '../api/tmdb';
+import { saveToHistory } from '../utils/history';
 import styles from './WatchModal.module.css';
 
 export default function WatchModal({ item, onClose }) {
@@ -45,6 +46,18 @@ export default function WatchModal({ item, onClose }) {
     }).catch(() => setLoadingEps(false));
   }, [item.id, type, selectedSeason]);
 
+  // ── Record Watch History ──────────────────────────────────────────────────
+  useEffect(() => {
+    if (!playing) return;
+    saveToHistory({
+      ...item,
+      ...(details || {}),
+      media_type: type,
+      season: type === 'tv' ? selectedSeason : null,
+      episode: type === 'tv' ? selectedEpisode : null,
+    });
+  }, [playing, selectedSeason, selectedEpisode, details, item, type]);
+
   // ── Anti-redirect & anti-popup guards ─────────────────────────────────────
   useEffect(() => {
     if (!playing) return;
@@ -52,7 +65,7 @@ export default function WatchModal({ item, onClose }) {
     // 1. Kill window.open — stops all popup/popunder ads from opening new tabs
     const _originalOpen = window.open;
     window.open = () => {
-      console.warn('[CineStream] Blocked popup ad');
+      console.warn('[Cinovo] Blocked popup ad');
       return null;
     };
 

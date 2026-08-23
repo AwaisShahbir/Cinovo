@@ -1,0 +1,143 @@
+/* ── Card shell ── */
+.card {
+  width: 170px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.25s, box-shadow 0.25s;
+  outline: none;
+}
+.card:hover, .card:focus-visible {
+  border-color: rgba(123,47,190,0.5);
+  box-shadow: 0 8px 32px rgba(123,47,190,0.25), 0 0 0 1px rgba(123,47,190,0.3);
+}
+
+/* ── Poster area ── */
+.poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: #1a1a2e;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.noPoster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.15);
+  background: linear-gradient(135deg, #1a1a2e, #0d0d1a);
+}
+
+/* ── Hover overlay ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.96) 0%,
+    rgba(0,0,0,0.6) 45%,
+    rgba(0,0,0,0.1) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+}
+.overlayContent {
+  width: 100%;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.tag {
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  background: rgba(123,47,190,0.35);
+  border: 1px solid rgba(123,47,190,0.4);
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+.readBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 8px;
+  background: linear-gradient(135deg, #7B2FBE, #E50914);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  font-family: inherit;
+}
+
+/* ── Badges ── */
+.scoreBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(6px);
+  color: #f5c518;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 20px;
+  border: 1px solid rgba(245,197,24,0.2);
+  letter-spacing: 0.2px;
+}
+.statusDot {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.5);
+  box-shadow: 0 0 6px currentColor;
+}
+
+/* ── Info bar ── */
+.info {
+  padding: 9px 10px 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+.statusText {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  opacity: 0.85;
+}

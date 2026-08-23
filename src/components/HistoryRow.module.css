@@ -1,0 +1,238 @@
+/* ── History Row Container ── */
+.section {
+  padding: 8px 0 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4% 14px;
+}
+
+.titleWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accentBar {
+  width: 4px;
+  height: 22px;
+  background: linear-gradient(to bottom, #7B2FBE, #E50914);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+
+.badgeCount {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(123,47,190,0.25);
+  border: 1px solid rgba(123,47,190,0.4);
+  color: #c4a0f0;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.55);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.clearBtn:hover {
+  background: rgba(239,68,68,0.18);
+  border-color: rgba(239,68,68,0.4);
+  color: #fca5a5;
+}
+
+/* ── Scroll Row ── */
+.scrollRow {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 4px 4% 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+.scrollRow::-webkit-scrollbar {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* ── Card ── */
+.card {
+  width: 155px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #12121c;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.card:hover {
+  border-color: rgba(123,47,190,0.5);
+  box-shadow: 0 8px 24px rgba(123,47,190,0.25);
+}
+
+/* Poster */
+.posterWrap {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: #1a1a2e;
+}
+.posterImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+.card:hover .posterImg {
+  transform: scale(1.05);
+}
+
+.noPoster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.2);
+  background: linear-gradient(135deg, #1a1a2e, #0d0d1a);
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.playIconBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7B2FBE, #E50914);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.card:hover .playIconBtn {
+  transform: scale(1.1);
+}
+
+/* Badges */
+.badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.badgeManga {
+  background: linear-gradient(135deg, #7B2FBE, #5a1f8a);
+  color: #fff;
+}
+.badgeTV {
+  background: rgba(14,165,233,0.9);
+  color: #fff;
+}
+.badgeMovie {
+  background: rgba(229,9,20,0.9);
+  color: #fff;
+}
+
+/* Remove button */
+.removeBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.15s;
+}
+.card:hover .removeBtn {
+  opacity: 1;
+}
+.removeBtn:hover {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+}
+
+/* Info */
+.info {
+  padding: 8px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cardTitle {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.4);
+}
+.clockIcon {
+  color: rgba(255,255,255,0.3);
+}
