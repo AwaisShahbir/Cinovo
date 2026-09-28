@@ -42,9 +42,14 @@ export const getPopularTV = (page = 1) =>
 export const getTopRatedTV = (page = 1) =>
   tmdb.get('/tv/top_rated', { params: { page } });
 
-export const discoverTV = (sortBy = 'popularity.desc', genreId = '', page = 1) =>
+export const discoverTV = (sortBy = 'popularity.desc', genreId = '', page = 1, originCountry = '') =>
   tmdb.get('/discover/tv', {
-    params: { sort_by: sortBy, with_genres: genreId || undefined, page },
+    params: {
+      sort_by: sortBy,
+      with_genres: genreId || undefined,
+      with_origin_country: originCountry || undefined,
+      page,
+    },
   });
 
 export const getTVDetails = (id) =>
