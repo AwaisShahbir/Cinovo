@@ -113,9 +113,11 @@ export default function WatchModal({ item, onClose }) {
           exit={{ scale: 0.85, opacity: 0, y: 40 }}
           transition={{ type: 'spring', stiffness: 280, damping: 28 }}
         >
-          <button className={styles.closeBtn} onClick={onClose}>
-            <X size={20} />
-          </button>
+          {!playing && (
+            <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
+              <X size={20} />
+            </button>
+          )}
 
           {loading ? (
             <div className={styles.loadingWrap}>
@@ -141,6 +143,9 @@ export default function WatchModal({ item, onClose }) {
                     </button>
                   ))}
                 </div>
+                <button className={styles.playerCloseBtn} onClick={onClose} aria-label="Close Player">
+                  <X size={18} />
+                </button>
               </div>
               <div className={styles.iframeWrap}>
                 <iframe

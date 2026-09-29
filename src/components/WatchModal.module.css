@@ -140,6 +140,26 @@
 }
 .serverBtn:hover { background: rgba(255,255,255,0.14); color: #fff; }
 .serverActive { background: #e50914 !important; border-color: #e50914 !important; color: #fff !important; }
+.playerCloseBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: 6px;
+  transition: all 0.2s;
+}
+.playerCloseBtn:hover {
+  background: #e50914;
+  border-color: #e50914;
+  color: #fff;
+}
 .iframeWrap {
   flex: 1;
   position: relative;
@@ -248,25 +268,39 @@
     flex-direction: column;
   }
   .playerHeader {
-    padding: 8px 12px;
-    gap: 8px;
+    padding: 8px 10px;
+    gap: 6px;
     flex-wrap: nowrap;
-    overflow-x: auto;
+    align-items: center;
+  }
+  .backBtn {
+    padding: 5px 9px;
+    font-size: 0.78rem;
+    flex-shrink: 0;
   }
   .playerTitle {
-    font-size: 0.84rem;
+    font-size: 0.8rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0;
+    flex: 1;
   }
   .serverTabs {
-    overflow-x: auto;
+    display: flex;
+    gap: 4px;
     flex-shrink: 0;
   }
   .serverBtn {
-    padding: 4px 8px;
+    padding: 4px 7px;
     font-size: 0.72rem;
     white-space: nowrap;
+  }
+  .playerCloseBtn {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    margin-left: 2px;
   }
   .iframeWrap {
     min-height: 220px;
