@@ -299,7 +299,7 @@ export default function Home({ onOpenModal }) {
     <motion.div variants={pageVariants} initial="hidden" animate="visible">
       <HeroBanner onOpenModal={onOpenModal} />
 
-      <div style={{ marginTop: '-60px', position: 'relative', zIndex: 1 }}>
+      <div className={styles.catalogWrap}>
         {/* Streaming Platforms Bar */}
         <ProviderBar
           selectedProvider={selectedProvider}

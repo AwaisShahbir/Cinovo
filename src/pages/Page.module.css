@@ -1,5 +1,5 @@
 .page {
-  padding-top: 90px;
+  padding-top: calc(84px + env(safe-area-inset-top, 0px));
   padding-bottom: 60px;
   min-height: 100vh;
 }

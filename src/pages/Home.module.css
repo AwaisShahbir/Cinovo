@@ -67,3 +67,16 @@
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
+
+.catalogWrap {
+  margin-top: -60px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .catalogWrap {
+    margin-top: 10px;
+  }
+}
+

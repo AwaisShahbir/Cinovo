@@ -2,18 +2,18 @@
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  padding: 0 4%;
-  height: 68px;
+  padding: env(safe-area-inset-top, 0px) 4% 0;
+  height: calc(68px + env(safe-area-inset-top, 0px));
   display: flex;
   align-items: center;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
-  transition: background 0.4s ease;
+  background: linear-gradient(to bottom, rgba(10,10,12,0.92) 0%, transparent 100%);
+  transition: background 0.3s ease;
 }
 .navbar.scrolled {
-  background: rgba(20, 20, 20, 0.98);
-  backdrop-filter: blur(12px);
+  background: rgba(13, 13, 16, 0.98);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 25px rgba(0,0,0,0.5);
 }
 .inner {
   width: 100%;
@@ -25,26 +25,22 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.5rem;
-  font-weight: 900;
-  letter-spacing: -0.5px;
   color: #fff;
   flex-shrink: 0;
   text-decoration: none;
+  line-height: 1;
 }
-.logo span { background: linear-gradient(135deg, #fff 0%, #ccc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .logoText {
-  background: linear-gradient(135deg, #ffffff 0%, #d0d0d0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 1.45rem;
+  font-weight: 900;
   letter-spacing: -0.5px;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 .logoC {
-  background: linear-gradient(135deg, #7B2FBE 0%, #E50914 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #e50914;
 }
 .navLinks {
   display: flex;
@@ -155,20 +151,44 @@
 
   .navLinks {
     position: fixed;
-    top: 68px; left: 0; right: 0;
-    max-height: calc(100vh - 68px);
+    top: calc(68px + env(safe-area-inset-top, 0px));
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - 68px - env(safe-area-inset-top, 0px));
     overflow-y: auto;
-    background: rgba(16, 16, 20, 0.98);
-    backdrop-filter: blur(16px);
+    background: #0e0e13;
     flex-direction: column;
-    padding: 16px 12px 28px;
+    padding: 16px 14px 28px;
     gap: 6px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    transform: translateY(-115%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 999;
   }
-  .navLinks.open { transform: translateY(0); }
-  .navLink { width: 100%; text-align: center; padding: 12px; font-size: 0.95rem; }
+  .navLinks.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .navLink {
+    width: 100%;
+    text-align: center;
+    padding: 13px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+  }
+  .navLink.active {
+    background: rgba(229, 9, 20, 0.15);
+    color: #fff;
+  }
+  .activeBar {
+    display: none; /* Hide bottom line bar on mobile dropdown to prevent ghost lines */
+  }
 
   .searchForm {
     max-width: 190px;
@@ -183,8 +203,8 @@
 }
 
 @media (max-width: 480px) {
-  .navbar { padding: 0 3.5%; }
-  .logo { font-size: 1.3rem; gap: 8px; }
+  .navbar { padding: env(safe-area-inset-top, 0px) 3.5% 0; }
+  .logoText { font-size: 1.3rem; }
   .searchForm {
     position: absolute;
     left: 10px;
@@ -200,4 +220,5 @@
     width: 100%;
   }
 }
+
 
