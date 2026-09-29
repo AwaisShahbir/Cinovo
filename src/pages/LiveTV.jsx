@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Radio, Search, Tv, Play, X, RefreshCw, Signal, Wifi, Info, Sparkles, Film, Loader2, Trophy, ExternalLink, Zap } from 'lucide-react';
 import Hls from 'hls.js';
@@ -192,175 +193,7 @@ const CHANNELS = [
     description: 'Pakistan’s premier tourism, nature, culture & travel documentary network.',
     dramas: ['discover pakistan', 'tourism']
   },
-  // ── CRICKET & GLOBAL SPORTS NETWORKS ───────────────────────────────────────
-  {
-    id: 'ptv-sports',
-    name: 'PTV Sports Live HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'PK',
-    flag: '🇵🇰',
-    color: '#1b7a42',
-    streamUrl: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8',
-    backupUrl: 'https://cdn.rabta.stream/M-Sports/index.m3u8',
-    server3Url: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8',
-    quality: '1080p Full HD',
-    isHls: true,
-    description: 'Pakistan’s premier national sports broadcaster. Live Pakistan cricket, PSL, ICC World Cup & bilateral series.',
-    dramas: ['ptv sports', 'ptv', 'cricket', 'psl', 'pakistan cricket', 'live match']
-  },
-  {
-    id: 'a-sports',
-    name: 'A Sports HD (ARY)',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'PK',
-    flag: '🇵🇰',
-    color: '#e50914',
-    streamUrl: 'https://cdn.rabta.stream/M-Sports/index.m3u8',
-    backupUrl: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8',
-    server3Url: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8',
-    quality: '1080p HD',
-    isHls: true,
-    description: 'ARY Group’s official sports network. Exclusive live PSL, ICC tournaments, bilateral tours & cricket talk shows.',
-    dramas: ['a sports', 'ary sports', 'ary', 'cricket', 'psl', 'live cricket']
-  },
-  {
-    id: 'ten-sports',
-    name: 'Ten Sports Pakistan HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'PK',
-    flag: '🇵🇰',
-    color: '#2980b9',
-    streamUrl: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8',
-    backupUrl: 'https://cdn.rabta.stream/M-Sports/index.m3u8',
-    server3Url: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8',
-    quality: '1080p HD',
-    isHls: true,
-    description: 'Top international cricket channel in Pakistan. Global tours, ICC events, Champions Trophy & bilateral series.',
-    dramas: ['ten sports', 'cricket', 'sports', 'live cricket', 'pakistan']
-  },
-  {
-    id: 'geo-super',
-    name: 'Geo Super HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'PK',
-    flag: '🇵🇰',
-    color: '#f39c12',
-    streamUrl: 'https://cdn.rabta.stream/M-Sports/index.m3u8',
-    backupUrl: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8',
-    quality: '720p HD',
-    isHls: true,
-    description: 'Har Pal Geo’s dedicated sports channel for domestic cricket, national championships & sports analysis.',
-    dramas: ['geo super', 'geo', 'cricket', 'super sports']
-  },
-  {
-    id: 'cricket-gold',
-    name: 'Cricket Gold HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'AU',
-    flag: '🇦🇺',
-    color: '#f1c40f',
-    streamUrl: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8',
-    backupUrl: 'https://streams2.sofast.tv/scheduler/scheduleMaster/418.m3u8',
-    quality: '1080p HD',
-    isHls: true,
-    description: '24/7 dedicated cricket network. Classic encounters, T20 league matches, historical world cups & masterclasses.',
-    dramas: ['cricket gold', 'cricket', 't20', 'live match', 'icc', 'world cup']
-  },
-  {
-    id: 'willow-cricket',
-    name: 'Willow Cricket HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'US',
-    flag: '🇺🇸',
-    color: '#27ae60',
-    streamUrl: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8',
-    backupUrl: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8',
-    quality: '1080p HD',
-    isHls: true,
-    description: 'North America’s premier cricket network. Live IPL, ICC events, bilateral tours and major franchise leagues.',
-    dramas: ['willow', 'willow cricket', 'cricket', 'ipl', 't20', 'live cricket']
-  },
-  {
-    id: 'sky-sports-cricket',
-    name: 'Sky Sports Cricket HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'GB',
-    flag: '🇬🇧',
-    color: '#002f6c',
-    streamUrl: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8',
-    backupUrl: 'https://cdn.rabta.stream/M-Sports/index.m3u8',
-    quality: '1080p HD',
-    isHls: true,
-    description: 'World-renowned cricket coverage from England, The Ashes, ICC tournaments, Test matches & The Hundred.',
-    dramas: ['sky sports', 'sky sports cricket', 'cricket', 'the ashes', 'test match']
-  },
-  {
-    id: 'star-sports-1',
-    name: 'Star Sports 1 HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'IN',
-    flag: '🇮🇳',
-    color: '#1a365d',
-    streamUrl: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8',
-    backupUrl: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8',
-    quality: '1080p HD',
-    isHls: true,
-    description: 'Home of Indian Premier League (IPL), ICC tournaments, Team India bilateral series & cricket studio analysis.',
-    dramas: ['star sports', 'cricket', 'ipl', 'icc', 'world cup', 'india']
-  },
-  {
-    id: 'supersport-cricket',
-    name: 'SuperSport Cricket HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'ZA',
-    flag: '🇿🇦',
-    color: '#008080',
-    streamUrl: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8',
-    backupUrl: 'https://cdn.rabta.stream/M-Sports/index.m3u8',
-    quality: '1080p HD',
-    isHls: true,
-    description: 'SuperSport’s premier cricket network. South Africa international matches, SA20 league & world tours.',
-    dramas: ['supersport', 'supersport cricket', 'cricket', 'sa20']
-  },
-  {
-    id: 't-sports',
-    name: 'T Sports Live HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'BD',
-    flag: '🇧🇩',
-    color: '#e74c3c',
-    streamUrl: 'https://cdn.rabta.stream/M-Sports/index.m3u8',
-    backupUrl: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8',
-    quality: '1080p HD',
-    isHls: true,
-    description: 'Bangladesh’s 24/7 sports network. Bangladesh Premier League (BPL), home international series and world cricket.',
-    dramas: ['t sports', 'bpl', 'cricket', 'bangladesh']
-  },
-  {
-    id: 'pcb-live',
-    name: 'PCB Live Stream',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'PK',
-    flag: '🇵🇰',
-    color: '#1b7a42',
-    streamUrl: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8',
-    backupUrl: 'https://cdn.rabta.stream/M-Sports/index.m3u8',
-    quality: '1080p HD',
-    isHls: true,
-    description: 'Pakistan Cricket Board official live match feeds, domestic champions cup, women’s cricket & press conferences.',
-    dramas: ['pcb', 'pcb live', 'pakistan cricket', 'domestic cricket', 'cricket']
-  },
+  // ── GLOBAL SPORTS NETWORKS (Note: Live Cricket is in the Live Cricket Section) ─
   {
     id: 'bein-sports-xtra',
     name: 'beIN Sports Xtra HD',
@@ -435,36 +268,6 @@ const CHANNELS = [
     isHls: true,
     description: 'Live ATP & WTA tour matches, Grand Slam highlights, tennis masterclasses and court-side analysis.',
     dramas: ['tennis', 'wimbledon', 'atp', 'wta', 'grand slam']
-  },
-  {
-    id: 'pk-sports',
-    name: 'PK Sports HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'PK',
-    flag: '🇵🇰',
-    color: '#16a085',
-    streamUrl: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8',
-    backupUrl: 'https://cdn.rabta.stream/M-Sports/index.m3u8',
-    quality: '720p HD',
-    isHls: true,
-    description: 'Pakistani sports, cricket match discussions, analysis and sports highlights.',
-    dramas: ['cricket', 'sports', 'pk sports']
-  },
-  {
-    id: 'm-sports',
-    name: 'M Sports HD',
-    category: 'Sports',
-    sportType: 'cricket',
-    country: 'PK',
-    flag: '🇵🇰',
-    color: '#2c3e50',
-    streamUrl: 'https://cdn.rabta.stream/M-Sports/index.m3u8',
-    backupUrl: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8',
-    quality: '720p HD',
-    isHls: true,
-    description: '24/7 sports coverage, cricket highlights, regional tournaments and athlete interviews from Pakistan.',
-    dramas: ['m sports', 'sports', 'cricket', 'pakistan']
   },
   {
     id: '8xm',
@@ -786,115 +589,16 @@ const DEFAULT_PAKISTANI_DRAMAS = [
   }
 ];
 
-// ── Webcric Live Cricket Match Center (Featured & Live Matches) ───────────────
-const FEATURED_CRICKET_MATCHES = [
-  {
-    id: 'match-pak-semifinal',
-    title: 'Pakistan vs Semi-Finalist',
-    series: 'Asian Games 2026 — Semi Final',
-    format: 'T20 International',
-    status: 'LIVE NOW',
-    isLive: true,
-    score: 'PAK: 178/4 (18.2 ov) · RR: 9.71',
-    venue: 'Pingfeng Campus Cricket Field, Hangzhou',
-    teams: [
-      { name: 'Pakistan', flag: '🇵🇰', code: 'PAK' },
-      { name: 'Opponent', flag: '🏆', code: 'TBD' }
-    ],
-    broadcasters: ['PTV Sports HD', 'A Sports HD', 'Ten Sports'],
-    servers: [
-      { id: 1, name: 'Server 1 (PTV Sports HD)', url: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8' },
-      { id: 2, name: 'Server 2 (A Sports / Fast)', url: 'https://cdn.rabta.stream/M-Sports/index.m3u8' },
-      { id: 3, name: 'Server 3 (Cricket Gold)', url: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8' }
-    ],
-    officialApps: [
-      { name: 'Tamasha Web', url: 'https://tamashaweb.com', tag: '0-Delay HD in PK' },
-      { name: 'Tapmad Sports', url: 'https://tapmad.com', tag: 'Ad-Free Cricket' },
-      { name: 'PCB Live', url: 'https://live.pcb.com.pk', tag: 'Official Board Feed' }
-    ]
-  },
-  {
-    id: 'match-eng-aus-series',
-    title: 'England vs Australia',
-    series: 'Bilateral T20I Series 2026',
-    format: 'T20 International',
-    status: 'LIVE NOW',
-    isLive: true,
-    score: 'ENG: 194/6 (20 ov) · AUS: 142/3 (14.1 ov)',
-    venue: 'Lord’s Cricket Ground, London',
-    teams: [
-      { name: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', code: 'ENG' },
-      { name: 'Australia', flag: '🇦🇺', code: 'AUS' }
-    ],
-    broadcasters: ['Sky Sports Cricket', 'Willow HD', 'Cricket Gold'],
-    servers: [
-      { id: 1, name: 'Server 1 (Cricket Gold HD)', url: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8' },
-      { id: 2, name: 'Server 2 (PK Sports HD)', url: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8' },
-      { id: 3, name: 'Server 3 (M Sports Fast)', url: 'https://cdn.rabta.stream/M-Sports/index.m3u8' }
-    ],
-    officialApps: [
-      { name: 'Sky Go / Now TV', url: 'https://www.skysports.com', tag: 'Official UK' },
-      { name: 'Willow TV', url: 'https://www.willow.tv', tag: 'Official US' }
-    ]
-  },
-  {
-    id: 'match-psl-champions',
-    title: 'Lahore Qalandars vs Karachi Kings',
-    series: 'Pakistan Super League (PSL Special)',
-    format: 'T20 League Match',
-    status: 'TODAY 19:30 PKT',
-    isLive: false,
-    score: 'Starts at 7:30 PM PKT',
-    venue: 'Gaddafi Stadium, Lahore',
-    teams: [
-      { name: 'Lahore Qalandars', flag: '🔴', code: 'LQ' },
-      { name: 'Karachi Kings', flag: '🔵', code: 'KK' }
-    ],
-    broadcasters: ['A Sports HD', 'PTV Sports HD', 'Ten Sports'],
-    servers: [
-      { id: 1, name: 'Server 1 (A Sports HD)', url: 'https://cdn.rabta.stream/M-Sports/index.m3u8' },
-      { id: 2, name: 'Server 2 (PTV Sports HD)', url: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8' },
-      { id: 3, name: 'Server 3 (Cricket Gold)', url: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8' }
-    ],
-    officialApps: [
-      { name: 'Tamasha Web', url: 'https://tamashaweb.com', tag: 'Official PSL Partner' },
-      { name: 'Tapmad', url: 'https://tapmad.com', tag: '4K Ultra Stream' }
-    ]
-  },
-  {
-    id: 'match-ind-semifinal',
-    title: 'India vs Semi-Finalist',
-    series: 'Asian Games 2026 — Semi Final',
-    format: 'T20 International',
-    status: 'UPCOMING',
-    isLive: false,
-    score: 'Match scheduled for tomorrow',
-    venue: 'Hangzhou International Sports Park',
-    teams: [
-      { name: 'India', flag: '🇮🇳', code: 'IND' },
-      { name: 'Opponent', flag: '🏆', code: 'TBD' }
-    ],
-    broadcasters: ['Star Sports 1', 'Sony Sports Ten', 'Cricket Gold'],
-    servers: [
-      { id: 1, name: 'Server 1 (Cricket Gold HD)', url: 'https://streams2.sofast.tv/ptnr-yupptv/title-cricketgold/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b2048bb8-1686-4432-aa50-647245383e0c/manifest.m3u8' },
-      { id: 2, name: 'Server 2 (PK Sports HD)', url: 'https://lbgo.bozztv.com/ssh101/ssh101/pksportshd/playlist.m3u8' }
-    ],
-    officialApps: [
-      { name: 'SonyLIV', url: 'https://www.sonyliv.com', tag: 'Official Broadcast' }
-    ]
-  }
-];
-
-const CATEGORIES = ['All', '🏏 Cricket & Sports', 'Pakistani Dramas', 'Pakistan TV', 'News', 'Documentaries', 'Music'];
+const CATEGORIES = ['All', 'Pakistani Dramas', 'Pakistan TV', 'News', 'Documentaries', 'Music', 'Sports'];
 
 // ── Streaming Apps in Pakistan Reference Guide ────────────────────────────────
 const PAKISTAN_STREAMING_APPS = [
-  { name: 'Tamasha', desc: 'Live TV (Geo, ARY, Hum, Ten Sports), Live Cricket (PSL/ICC) & Pakistani Dramas', tag: 'Top Free + Premium' },
-  { name: 'ARY ZAP', desc: 'Official streaming for ARY Digital dramas, ARY News and live cricket streaming', tag: 'Free Official' },
-  { name: 'Tapmad', desc: 'Premier sports streaming (EPL, LaLiga, Serie A, Cricket) and on-demand movies', tag: 'Sports Leader' },
-  { name: 'Hum TV App / YouTube', desc: 'Full episodes of hit Pakistani dramas (Parizaad, Fairy Tale, Tere Bin)', tag: '1080p Official' },
-  { name: 'Shoq TV', desc: 'PTCL streaming service with live Pakistani channels and Hollywood blockbusters', tag: 'Telecom TV' },
-  { name: 'Myco', desc: 'Decentralized sports streaming app with live cricket streaming in Pakistan', tag: 'Live Sports' },
+  { name: 'Tamasha', desc: 'Live Pakistani TV channels (Geo, ARY, Hum, Dunya) & blockbuster dramas', tag: 'Top Free + Premium' },
+  { name: 'ARY ZAP', desc: 'Official streaming app for ARY Digital full dramas, ARY News and live shows', tag: 'Free Official' },
+  { name: 'Tapmad', desc: 'Pakistan’s top streaming platform for high-bitrate live TV and entertainment', tag: 'HD Streaming' },
+  { name: 'Hum TV App / YouTube', desc: 'Full official HD episodes of hit Pakistani dramas (Parizaad, Fairy Tale, Ishq Murshid)', tag: '1080p Official' },
+  { name: 'Shoq TV', desc: 'PTCL official entertainment platform with live TV channels and on-demand movies', tag: 'Telecom TV' },
+  { name: 'Green TV App', desc: 'Home of groundbreaking modern Pakistani drama serials (Kabli Pulao, Jeevan Nagar)', tag: 'Dramas' },
 ];
 
 // ── Native / HLS Video Player Component ───────────────────────────────────────
@@ -984,7 +688,7 @@ function VideoStreamPlayer({ src, onLoaded, onError }) {
 // ── Main Page ─────────────────────────────────────────────────────────────────
 export default function LiveTV() {
   const [category, setCategory]           = useState('All');
-  const [sportSubFilter, setSportSubFilter] = useState('All'); // 'All' | 'cricket' | 'football' | 'racing' | 'combat'
+  const [sportSubFilter, setSportSubFilter] = useState('All'); // 'All' | 'football' | 'racing' | 'combat'
   const [query, setQuery]                 = useState('');
   const [activeMedia, setActiveMedia]     = useState(null); // active channel or drama or match object
   const [selectedEp, setSelectedEp]       = useState(1);    // currently selected episode number
@@ -1027,18 +731,25 @@ export default function LiveTV() {
     return () => clearTimeout(timer);
   }, [cleanQ]);
 
+  // Check if user is searching for cricket content
+  const isCricketSearch = useMemo(() => {
+    if (!cleanQ) return false;
+    const cricketKeywords = ['cricket', 'psl', 'ipl', 'match', 'ptv', 'willow', 'babar', 't20', 'icc', 'a sports', 'ten sports'];
+    return cricketKeywords.some(k => cleanQ.includes(k));
+  }, [cleanQ]);
+
   // Filter channels
   const filteredChannels = useMemo(() =>
     CHANNELS.filter(ch => {
       const matchCat =
         category === 'All' ||
-        (category === '🏏 Cricket & Sports' ? ch.category === 'Sports' : ch.category === category) ||
+        ch.category === category ||
         (category === 'Pakistan TV' && ch.country === 'PK');
 
       if (!matchCat) return false;
 
-      // Sports sub-category filter (e.g. Cricket, Football, Racing, Combat)
-      if ((category === '🏏 Cricket & Sports' || category === 'Sports') && sportSubFilter !== 'All') {
+      // Sports sub-category filter (e.g. Football, Racing, Combat)
+      if (category === 'Sports' && sportSubFilter !== 'All') {
         if (ch.category === 'Sports' && ch.sportType !== sportSubFilter) return false;
       }
 
@@ -1047,8 +758,7 @@ export default function LiveTV() {
       const inName = ch.name.toLowerCase().includes(cleanQ);
       const inCat = ch.category.toLowerCase().includes(cleanQ);
       const inDramas = ch.dramas?.some(d => d.toLowerCase().includes(cleanQ));
-      const inKeywords = (ch.country === 'PK' && ('pakistan'.includes(cleanQ) || 'urdu'.includes(cleanQ))) ||
-        (ch.category === 'Sports' && ('cricket'.includes(cleanQ) || 'match'.includes(cleanQ) || 'sports'.includes(cleanQ)));
+      const inKeywords = ch.country === 'PK' && ('pakistan'.includes(cleanQ) || 'urdu'.includes(cleanQ));
 
       return inName || inCat || inDramas || inKeywords;
     }), [category, sportSubFilter, cleanQ]);
@@ -1089,9 +799,8 @@ export default function LiveTV() {
   // Group channels by category for layout
   const groupedChannels = useMemo(() => {
     if (category === 'Pakistani Dramas') return {};
-    if (category === '🏏 Cricket & Sports') return { 'Sports': filteredChannels };
     if (category !== 'All') return { [category]: filteredChannels };
-    return ['Sports', 'Pakistan TV', 'News', 'Documentaries', 'Music'].reduce((acc, cat) => {
+    return ['Pakistan TV', 'News', 'Documentaries', 'Sports', 'Music'].reduce((acc, cat) => {
       const channels = filteredChannels.filter(ch =>
         cat === 'Pakistan TV' ? ch.country === 'PK' : ch.category === cat
       );
@@ -1101,35 +810,12 @@ export default function LiveTV() {
   }, [category, filteredChannels]);
 
   const openItem = (item, isDrama = false) => {
-    setActiveMedia({ ...item, isDramaItem: isDrama, isMatch: false });
+    setActiveMedia({ ...item, isDramaItem: isDrama });
     setSelectedEp(1);
     setCustomMaxEp(0);
     setResolvedEpId(item.episodesList?.[0]?.id || item.videoId || null);
-    setSidebarTab(isDrama ? 'episodes' : item.category === 'Sports' ? 'channels' : 'all');
+    setSidebarTab(isDrama ? 'episodes' : 'all');
     setServer(1);
-    setLoading(true);
-    setError(false);
-  };
-
-  const openMatch = (match, serverNum = 1) => {
-    const srv = match.servers.find(s => s.id === serverNum) || match.servers[0];
-    setActiveMedia({
-      ...match,
-      name: `${match.teams[0].name} vs ${match.teams[1].name}`,
-      streamUrl: srv.url,
-      backupUrl: match.servers[1]?.url || srv.url,
-      server3Url: match.servers[2]?.url || '',
-      isMatch: true,
-      isDramaItem: false,
-      isHls: true,
-      quality: '1080p HD Live',
-      flag: '🏏',
-      color: '#1b7a42',
-      category: 'Sports',
-      description: `${match.series} · ${match.format} · ${match.venue}`
-    });
-    setServer(serverNum);
-    setSidebarTab('matches');
     setLoading(true);
     setError(false);
   };
@@ -1204,11 +890,6 @@ export default function LiveTV() {
       // Server 2 fallback for drama: network live broadcast or mirror
       const networkCh = CHANNELS.find(c => c.name.toLowerCase().includes(activeMedia.network.toLowerCase().split(' ')[0]));
       return networkCh?.backupUrl || networkCh?.streamUrl || `https://www.youtube-nocookie.com/embed/${resolvedEpId || ''}?autoplay=1`;
-    }
-
-    if (activeMedia.isMatch) {
-      const srv = activeMedia.servers?.find(s => s.id === activeServer) || activeMedia.servers?.[0];
-      return srv?.url || activeMedia.streamUrl;
     }
 
     if (activeServer === 1) return activeMedia.streamUrl;
@@ -1316,7 +997,7 @@ export default function LiveTV() {
                   🇵🇰 Official Streaming Apps & Platforms in Pakistan
                 </span>
                 <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.4)' }}>
-                  TV Shows, Live Cricket & Dramas
+                  TV Shows, News &amp; Pakistani Dramas
                 </span>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
@@ -1362,114 +1043,52 @@ export default function LiveTV() {
 
       {/* ── Main Content Area ── */}
       <main className={styles.main}>
-        {/* ── Webcric Live Cricket Match Center ── */}
-        {(category === 'All' || category === '🏏 Cricket & Sports' || category === 'Sports') && !cleanQ && (
-          <section className={styles.webcricSection}>
-            <div className={styles.webcricHeader}>
+        {/* ── Live Cricket Redirect Notice Banner ── */}
+        {!cleanQ && (
+          <div className={styles.cricketBanner}>
+            <div className={styles.cricketBannerLeft}>
+              <div className={styles.cricketBannerIcon}>🏏</div>
               <div>
-                <h2 className={styles.webcricTitle}>
-                  <Trophy size={22} color="#2ecc71" />
-                  Webcric Live Cricket Match Center
-                  <span className={styles.matchBadgeLive} style={{ marginLeft: '6px' }}>
-                    <span className={styles.dotPulse} /> LIVE
-                  </span>
-                </h2>
-                <span className={styles.webcricSubtitle}>
-                  Real-time multi-server streaming for Pakistan Cricket, PSL, ICC Tournaments & Global T20 Leagues
-                </span>
-              </div>
-              <div style={{ display: 'flex', gap: '8px' }}>
-                <a
-                  href="https://tamashaweb.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.broadcasterTag}
-                  style={{ textDecoration: 'none', background: 'rgba(46,204,113,0.15)', color: '#2ecc71', borderColor: 'rgba(46,204,113,0.3)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
-                >
-                  <ExternalLink size={11} /> Tamasha (0-Delay)
-                </a>
-                <a
-                  href="https://tapmad.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.broadcasterTag}
-                  style={{ textDecoration: 'none', background: 'rgba(231,76,60,0.15)', color: '#ff6b6b', borderColor: 'rgba(231,76,60,0.3)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
-                >
-                  <ExternalLink size={11} /> Tapmad (Ad-Free)
-                </a>
-              </div>
-            </div>
-
-            <div className={styles.matchGrid}>
-              {FEATURED_CRICKET_MATCHES.map(match => (
-                <div
-                  key={match.id}
-                  className={`${styles.matchCard} ${match.isLive ? styles.matchCardLive : ''}`}
-                >
-                  <div className={styles.matchCardTop}>
-                    <span className={styles.matchSeries}>{match.series}</span>
-                    {match.isLive ? (
-                      <span className={styles.matchBadgeLive}>
-                        <span className={styles.dotPulse} /> LIVE
-                      </span>
-                    ) : (
-                      <span className={styles.matchBadgeUpcoming}>{match.status}</span>
-                    )}
-                  </div>
-
-                  <div className={styles.matchVersus}>
-                    <div className={styles.matchTeam}>
-                      <span className={styles.matchTeamFlag}>{match.teams[0].flag}</span>
-                      <span className={styles.matchTeamName}>{match.teams[0].name}</span>
-                    </div>
-                    <span className={styles.matchVs}>VS</span>
-                    <div className={`${styles.matchTeam} ${styles.matchTeamRight}`}>
-                      <span className={styles.matchTeamName}>{match.teams[1].name}</span>
-                      <span className={styles.matchTeamFlag}>{match.teams[1].flag}</span>
-                    </div>
-                  </div>
-
-                  <div className={styles.matchScoreTicker}>
-                    <span>{match.score}</span>
-                    <span style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.45)' }}>{match.format}</span>
-                  </div>
-
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div className={styles.matchBroadcasters}>
-                      {match.broadcasters.map(b => (
-                        <span key={b} className={styles.broadcasterTag}>{b}</span>
-                      ))}
-                    </div>
-                    <span className={styles.matchVenue}>{match.venue.split(',')[0]}</span>
-                  </div>
-
-                  {/* Multi-Server Stream Buttons (Webcric style) */}
-                  <div className={styles.matchServersRow}>
-                    {match.servers.map((srv, idx) => (
-                      <button
-                        key={srv.id}
-                        type="button"
-                        className={`${styles.serverBtn} ${idx === 0 ? styles.serverBtnPrimary : ''}`}
-                        onClick={() => openMatch(match, srv.id)}
-                        title={`Stream ${match.title} on ${srv.name}`}
-                      >
-                        <Zap size={12} />
-                        {srv.name.split(' ')[0]} {srv.id}
-                      </button>
-                    ))}
-                  </div>
+                <div className={styles.cricketBannerTitle}>
+                  Live Cricket Match Center &amp; Channels
                 </div>
-              ))}
+                <div className={styles.cricketBannerSub}>
+                  PTV Sports HD, A Sports, Ten Sports, Willow, Sky Sports &amp; real-time live match center are streaming in the Live Cricket section.
+                </div>
+              </div>
             </div>
-          </section>
+            <Link to="/sports" className={styles.cricketBannerBtn}>
+              <Trophy size={15} />
+              Go to Live Cricket →
+            </Link>
+          </div>
         )}
 
-        {/* Sports Sub-Filter Pills when inside Cricket & Sports */}
-        {(category === '🏏 Cricket & Sports' || category === 'Sports') && (
+        {/* ── Search Cricket Callout ── */}
+        {isCricketSearch && (
+          <div className={styles.cricketSearchCallout}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span style={{ fontSize: '1.6rem' }}>🏏</span>
+              <div>
+                <strong style={{ color: '#fff', fontSize: '0.95rem', display: 'block' }}>
+                  Looking for Live Cricket Matches or Channels for "{query}"?
+                </strong>
+                <span style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)' }}>
+                  All live cricket streams, PTV Sports, A Sports, Willow, and ball-by-ball matches are streaming in the Live Cricket section.
+                </span>
+              </div>
+            </div>
+            <Link to="/sports" className={styles.cricketBannerBtn}>
+              <Play size={14} fill="#fff" /> Open Live Cricket Section
+            </Link>
+          </div>
+        )}
+
+        {/* Sports Sub-Filter Pills when inside Sports category */}
+        {category === 'Sports' && (
           <div className={styles.sportsFilterRow}>
             {[
               { id: 'All', label: '⚡ All Sports Channels' },
-              { id: 'cricket', label: '🏏 Live Cricket (PTV, A Sports, Ten, Willow, Sky)' },
               { id: 'football', label: '⚽ Football & Soccer (beIN Sports)' },
               { id: 'racing', label: '🏎️ F1 & Motorsport (Red Bull TV, Motorvision)' },
               { id: 'combat', label: '🥊 Combat & Tennis (Fight Network, Tennis Channel)' }
@@ -1483,6 +1102,9 @@ export default function LiveTV() {
                 {pill.label}
               </button>
             ))}
+            <Link to="/sports" className={styles.sportsCricketPill}>
+              🏏 Live Cricket (PTV, A Sports, Ten, Willow, PSL) →
+            </Link>
           </div>
         )}
 
@@ -1534,7 +1156,7 @@ export default function LiveTV() {
             <div className={styles.rowHeader}>
               <h2 className={styles.rowTitle}>
                 {cat === 'Sports'
-                  ? '🏏 Live Sports TV (PTV Sports, A Sports, Ten Sports, Willow, Sky Sports, beIN)'
+                  ? '🏆 Sports TV (beIN Sports, Red Bull TV, Fight Network, Motorvision)'
                   : cat === 'Pakistan TV'
                   ? '🇵🇰 Pakistan Live TV Channels (ARY, Geo, Green, HUM, Express)'
                   : cat}
@@ -1776,33 +1398,6 @@ export default function LiveTV() {
                       </form>
                     </div>
                   )}
-
-                  {/* Match Info Ticker for Live Matches */}
-                  {activeMedia.isMatch && (
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', background: 'rgba(0,0,0,0.4)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#2ecc71', fontWeight: 600 }}>
-                        <span className={styles.dotPulse} /> {activeMedia.score}
-                      </div>
-                      <div style={{ display: 'flex', gap: '8px' }}>
-                        <a
-                          href="https://tamashaweb.com"
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{ textDecoration: 'none', background: 'rgba(46,204,113,0.15)', border: '1px solid rgba(46,204,113,0.3)', color: '#2ecc71', fontSize: '0.7rem', padding: '4px 8px', borderRadius: '4px' }}
-                        >
-                          Tamasha PK
-                        </a>
-                        <a
-                          href="https://tapmad.com"
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{ textDecoration: 'none', background: 'rgba(231,76,60,0.15)', border: '1px solid rgba(231,76,60,0.3)', color: '#ff6b6b', fontSize: '0.7rem', padding: '4px 8px', borderRadius: '4px' }}
-                        >
-                          Tapmad HD
-                        </a>
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 {/* ── Sidebar ── */}
@@ -1886,64 +1481,9 @@ export default function LiveTV() {
                         )}
                       </div>
                     </>
-                  ) : activeMedia.isMatch || activeMedia.category === 'Sports' ? (
-                    <>
-                      <div className={styles.sideTabGroup}>
-                        <button
-                          className={`${styles.sideTab} ${sidebarTab === 'matches' ? styles.sideTabActive : ''}`}
-                          onClick={() => setSidebarTab('matches')}
-                        >
-                          🏏 Live Matches ({FEATURED_CRICKET_MATCHES.length})
-                        </button>
-                        <button
-                          className={`${styles.sideTab} ${sidebarTab === 'channels' ? styles.sideTabActive : ''}`}
-                          onClick={() => setSidebarTab('channels')}
-                        >
-                          📺 Sports Channels
-                        </button>
-                      </div>
-
-                      <div className={styles.sidebarList}>
-                        {sidebarTab === 'matches' ? (
-                          FEATURED_CRICKET_MATCHES.map(m => (
-                            <button
-                              key={m.id}
-                              className={`${styles.sidebarItem} ${m.id === activeMedia.id ? styles.sidebarActive : ''}`}
-                              onClick={() => openMatch(m, 1)}
-                            >
-                              <span className={styles.sideFlag}>{m.teams[0].flag}</span>
-                              <div className={styles.sideMeta}>
-                                <span className={styles.sideName}>{m.title}</span>
-                                <span className={styles.sideCat}>{m.score || m.status}</span>
-                              </div>
-                              {m.id === activeMedia.id && (
-                                <span className={styles.sideLive}><span className={styles.dotPulse} /></span>
-                              )}
-                            </button>
-                          ))
-                        ) : (
-                          CHANNELS.filter(c => c.category === 'Sports').map(ch => (
-                            <button
-                              key={ch.id}
-                              className={`${styles.sidebarItem} ${ch.id === activeMedia.id ? styles.sidebarActive : ''}`}
-                              onClick={() => openItem(ch, false)}
-                            >
-                              <span className={styles.sideFlag}>{ch.flag}</span>
-                              <div className={styles.sideMeta}>
-                                <span className={styles.sideName}>{ch.name}</span>
-                                <span className={styles.sideCat}>{ch.sportType ? ch.sportType.toUpperCase() : 'SPORTS'} · {ch.quality}</span>
-                              </div>
-                              {ch.id === activeMedia.id && (
-                                <span className={styles.sideLive}><span className={styles.dotPulse} /></span>
-                              )}
-                            </button>
-                          ))
-                        )}
-                      </div>
-                    </>
                   ) : (
                     <>
-                      <div className={styles.sidebarTitle}><Tv size={14} /> Live Channels</div>
+                      <div className={styles.sidebarTitle}><Tv size={14} /> Live TV Channels ({CHANNELS.length})</div>
                       <div className={styles.sidebarList}>
                         {CHANNELS.map(ch => (
                           <button

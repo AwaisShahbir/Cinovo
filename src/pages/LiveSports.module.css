@@ -25,7 +25,55 @@
 
 .heroTitle { font-size: clamp(2.2rem,5vw,4rem); font-weight: 900; color: #fff; margin: 0 0 14px; letter-spacing: -0.02em; }
 .accent { color: #ea580c; }
-.heroSub { color: rgba(255,255,255,0.45); font-size: 0.95rem; margin: 0; max-width: 600px; margin: 0 auto; }
+.heroSub { color: rgba(255,255,255,0.45); font-size: 0.95rem; margin: 0 auto; max-width: 600px; }
+
+.searchBar {
+  max-width: 580px;
+  margin: 24px auto 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIco {
+  position: absolute;
+  left: 18px;
+  color: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  padding: 13px 44px 13px 48px;
+  color: #fff;
+  font-size: 0.92rem;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.searchInput:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(234, 88, 12, 0.6);
+  box-shadow: 0 0 24px rgba(234, 88, 12, 0.25);
+}
+
+.clearBtn {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 4px;
+}
+
+.clearBtn:hover {
+  color: #fff;
+}
 
 /* ── Sport Filter Bar ───────────────────────────────────────────────── */
 .sportBar {

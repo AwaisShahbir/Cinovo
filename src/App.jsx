@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import WatchModal from './components/WatchModal';
+import Landing from './pages/Landing';
 import Home from './pages/Home';
 import Movies from './pages/Movies';
 import TVShows from './pages/TVShows';
@@ -27,13 +28,17 @@ export default function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" element={<Home onOpenModal={openModal} />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/home" element={<Home onOpenModal={openModal} />} />
+          <Route path="/browse" element={<Home onOpenModal={openModal} />} />
           <Route path="/movies" element={<Movies onOpenModal={openModal} />} />
           <Route path="/tv" element={<TVShows onOpenModal={openModal} />} />
           <Route path="/anime" element={<Anime onOpenModal={openModal} />} />
           <Route path="/manga" element={<Manga />} />
           <Route path="/live-tv" element={<LiveTV />} />
           <Route path="/sports" element={<LiveSports />} />
+          <Route path="/cricket" element={<LiveSports />} />
+          <Route path="/live-cricket" element={<LiveSports />} />
           <Route path="/trending" element={<Trending onOpenModal={openModal} />} />
           <Route path="/search" element={<SearchResults onOpenModal={openModal} />} />
         </Routes>

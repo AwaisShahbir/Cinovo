@@ -51,13 +51,13 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { to: '/',         label: 'Home' },
+    { to: '/home',     label: 'Home' },
     { to: '/movies',   label: 'Movies' },
     { to: '/tv',       label: 'TV Shows' },
     { to: '/anime',    label: 'Anime' },
     { to: '/manga',    label: 'Manga' },
     { to: '/live-tv',  label: 'Live TV' },
-    { to: '/sports',   label: 'Live Sports' },
+    { to: '/sports',   label: 'Live Cricket' },
     { to: '/trending', label: 'Trending' },
   ];
 
@@ -101,19 +101,22 @@ export default function Navbar() {
 
         {/* Desktop Nav Links */}
         <ul className={`${styles.navLinks} ${menuOpen ? styles.open : ''}`}>
-          {navLinks.map(({ to, label }) => (
-            <li key={to}>
-              <Link
-                to={to}
-                className={`${styles.navLink} ${location.pathname === to ? styles.active : ''}`}
-              >
-                {label}
-                {location.pathname === to && (
-                  <motion.span className={styles.activeBar} layoutId="activeBar" />
-                )}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map(({ to, label }) => {
+            const isActive = location.pathname === to || (to === '/home' && (location.pathname === '/home' || location.pathname === '/browse')) || (to === '/sports' && (location.pathname === '/cricket' || location.pathname === '/live-cricket'));
+            return (
+              <li key={to}>
+                <Link
+                  to={to}
+                  className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+                >
+                  {label}
+                  {isActive && (
+                    <motion.span className={styles.activeBar} layoutId="activeBar" />
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Right Controls */}

@@ -1,6 +1,7 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Play, X, Flame, RefreshCw, Signal, Wifi, Zap, ExternalLink, Radio } from 'lucide-react';
+import { Trophy, Play, X, Flame, RefreshCw, Signal, Wifi, Zap, ExternalLink, Radio, Search } from 'lucide-react';
 import Hls from 'hls.js';
 import styles from './LiveSports.module.css';
 
@@ -91,7 +92,7 @@ function VideoStreamPlayer({ src, onLoaded, onError }) {
 // ── Sport Categories ──────────────────────────────────────────────────────────
 const SPORTS = [
   { id: 'all',        name: 'All Sports',   icon: '🏆' },
-  { id: 'cricket',    name: 'Cricket',       icon: '🏏' },
+  { id: 'cricket',    name: 'Live Cricket', icon: '🏏' },
   { id: 'soccer',     name: 'Soccer',        icon: '⚽' },
   { id: 'f1',         name: 'Formula 1',     icon: '🏎️' },
   { id: 'ufc',        name: 'UFC / Boxing',  icon: '🥊' },
@@ -397,26 +398,64 @@ const SPORTS_CHANNELS = [
 ];
 
 export default function LiveSports() {
-  const [sport, setSport]             = useState('all');
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
+
+  const initialSport = useMemo(() => {
+    const s = searchParams.get('sport') || searchParams.get('tab');
+    if (s) return s.toLowerCase();
+    if (location.pathname.includes('cricket')) return 'cricket';
+    return 'all';
+  }, [searchParams, location.pathname]);
+
+  const [sport, setSport]             = useState(initialSport);
+  const [query, setQuery]             = useState('');
   const [activeMedia, setActiveMedia] = useState(null); // active channel or match object
   const [server, setServer]           = useState(1);
   const [sidebarTab, setSidebarTab]   = useState('matches'); // 'matches' | 'channels'
   const [loading, setLoading]         = useState(false);
   const [error, setError]             = useState(false);
 
+  // Sync if route changes or searchParams changes
+  useEffect(() => {
+    const s = searchParams.get('sport') || searchParams.get('tab');
+    if (s) setSport(s.toLowerCase());
+    else if (location.pathname.includes('cricket')) setSport('cricket');
+  }, [searchParams, location.pathname]);
+
+  const cleanQ = useMemo(() => query.toLowerCase().trim(), [query]);
+
   const filtered = useMemo(() =>
-    SPORTS_CHANNELS.filter(ch => sport === 'all' || ch.sport === sport),
-    [sport]);
+    SPORTS_CHANNELS.filter(ch => {
+      const matchSport = sport === 'all' || ch.sport === sport;
+      if (!matchSport) return false;
+      if (!cleanQ) return true;
+      return (
+        ch.name.toLowerCase().includes(cleanQ) ||
+        ch.description.toLowerCase().includes(cleanQ) ||
+        ch.country.toLowerCase().includes(cleanQ) ||
+        ch.sport.toLowerCase().includes(cleanQ)
+      );
+    }),
+    [sport, cleanQ]);
 
   // Group by sport for row layout
   const grouped = useMemo(() => {
     if (sport !== 'all') return { [sport]: { icon: SPORTS.find(s=>s.id===sport)?.icon, channels: filtered } };
     return SPORTS.slice(1).reduce((acc, s) => {
-      const channels = SPORTS_CHANNELS.filter(ch => ch.sport === s.id);
+      const channels = SPORTS_CHANNELS.filter(ch => {
+        if (ch.sport !== s.id) return false;
+        if (!cleanQ) return true;
+        return (
+          ch.name.toLowerCase().includes(cleanQ) ||
+          ch.description.toLowerCase().includes(cleanQ) ||
+          ch.country.toLowerCase().includes(cleanQ)
+        );
+      });
       if (channels.length) acc[s.name] = { icon: s.icon, channels };
       return acc;
     }, {});
-  }, [sport, filtered]);
+  }, [sport, filtered, cleanQ]);
 
   const openChannel = (ch) => {
     setActiveMedia({ ...ch, isMatch: false });
@@ -484,6 +523,17 @@ export default function LiveSports() {
         <p className={styles.heroSub}>
           PTV Sports · A Sports · Ten Sports · Willow · Sky Sports · beIN Sports · PSL &amp; World Tournaments — 1080p HD.
         </p>
+
+        <div className={styles.searchBar}>
+          <Search size={16} className={styles.searchIco} />
+          <input
+            placeholder="Search sports &amp; cricket channels (e.g. 'PTV', 'A Sports', 'Willow', 'Sky')…"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            className={styles.searchInput}
+          />
+          {query && <button onClick={() => setQuery('')} className={styles.clearBtn}>✕</button>}
+        </div>
       </section>
 
       {/* ── Sport Filter Tabs ── */}

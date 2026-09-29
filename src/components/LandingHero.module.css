@@ -1,0 +1,552 @@
+.landingContainer {
+  position: relative;
+  width: 100%;
+  background-color: #07090c;
+  background-image:
+    radial-gradient(ellipse 90% 50% at 50% 0%, rgba(34, 197, 94, 0.12) 0%, transparent 65%),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  padding: 110px 4% 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Hero Center ───────────────────────────────────────────────────────────── */
+.heroCenter {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pillBadge {
+  color: #22c55e;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.heroTitle {
+  font-size: clamp(3.2rem, 8vw, 5.8rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+.heroSubtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  margin: 0 0 28px;
+  max-width: 620px;
+}
+
+/* ── Search Box ─────────────────────────────────────────────────────────────── */
+.searchBox {
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(14, 17, 24, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 3px;
+  margin-bottom: 26px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.searchBox:focus-within {
+  border-color: rgba(34, 197, 94, 0.6);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+}
+
+.searchIcon {
+  margin-left: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.goBtn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 8px 18px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 6px;
+}
+
+.goBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #22c55e;
+}
+
+/* ── Action Buttons ─────────────────────────────────────────────────────────── */
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 220px;
+}
+
+.startWatchingBtn {
+  background: #4ade80;
+  color: #052e16;
+  font-weight: 800;
+  font-size: 0.88rem;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 9999px;
+  padding: 13px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(74, 222, 128, 0.35);
+  transition: all 0.2s ease;
+}
+
+.startWatchingBtn:hover {
+  background: #22c55e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 26px rgba(74, 222, 128, 0.5);
+}
+
+.discordBtn {
+  background: #5865F2;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(88, 101, 242, 0.35);
+  transition: all 0.2s ease;
+}
+
+.discordBtn:hover {
+  background: #4752c4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(88, 101, 242, 0.5);
+  color: #fff;
+}
+
+/* ── Advertisement Section ─────────────────────────────────────────────────── */
+.adSection {
+  width: 100%;
+  max-width: 860px;
+  margin: 10px auto 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adLabel {
+  font-size: 0.68rem;
+  letter-spacing: 3.5px;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.adBannerSlot {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+  transition: all 0.25s ease;
+}
+
+.hubMarketCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #0f1118 0%, #151824 50%, #0d0f15 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 24px 28px;
+  text-decoration: none;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.hubMarketCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #f97316, #ea580c);
+}
+
+.hubMarketCard:hover {
+  border-color: rgba(249, 115, 22, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(249, 115, 22, 0.15);
+}
+
+.hubLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 340px;
+  z-index: 1;
+}
+
+.hubBrand {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.hubTagline {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.hubUrl {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #f97316;
+  margin-top: 4px;
+}
+
+.hubVisuals {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  z-index: 1;
+}
+
+/* Code mockup preview */
+.codeMock {
+  background: #08090d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px 12px;
+  width: 220px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.codeHeader {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.dotRed { width: 6px; height: 6px; border-radius: 50%; background: #ef4444; }
+.dotYellow { width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; }
+.dotGreen { width: 6px; height: 6px; border-radius: 50%; background: #10b981; }
+
+.codeLines {
+  font-family: monospace;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.cKeyword { color: #f97316; }
+.cString { color: #34d399; }
+.cFunction { color: #60a5fa; }
+
+/* Graphics column */
+.graphicsRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.graphicCastle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.castleIcon { font-size: 2rem; line-height: 1; }
+.assetBadge { font-size: 0.65rem; color: rgba(255, 255, 255, 0.5); margin-top: 4px; }
+
+.miniCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.botIcon, .shieldIcon { font-size: 1.4rem; line-height: 1; }
+.miniPrice { font-size: 0.65rem; font-weight: 700; color: #f97316; margin-top: 4px; }
+
+/* ── Viewlist Feature Card ─────────────────────────────────────────────────── */
+.viewlistSection {
+  width: 100%;
+  max-width: 600px;
+  margin: 10px auto 55px;
+}
+
+.viewlistCard {
+  background: rgba(18, 20, 28, 0.95);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 18px;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+}
+
+.viewlistCard:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 6px 30px rgba(245, 158, 11, 0.15);
+}
+
+.viewlistLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.viewlistIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  flex-shrink: 0;
+}
+
+.viewlistTextGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.viewlistTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.viewlistTags {
+  display: flex;
+  gap: 6px;
+}
+
+.viewlistTag {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.viewlistTag:hover {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #f59e0b;
+  color: #fbbf24;
+}
+
+.viewlistOpenBtn {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #111827;
+  font-size: 0.82rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 9999px;
+  padding: 9px 24px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+  transition: all 0.2s ease;
+}
+
+.viewlistOpenBtn:hover {
+  background: #fbbf24;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+}
+
+/* ── Why Auto Embed Section ────────────────────────────────────────────────── */
+.whySection {
+  width: 100%;
+  max-width: 980px;
+  margin: 10px auto 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.whyInner {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.whyLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.whyTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin: 0 0 12px;
+}
+
+.greenBar {
+  width: 55px;
+  height: 3px;
+  background: #22c55e;
+  border-radius: 2px;
+  margin-bottom: 22px;
+}
+
+.whyLeadText {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.whyRight {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.whyPoint {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.whyPoint p {
+  margin: 0;
+}
+
+/* ── Floating Scroll-To-Top Button ─────────────────────────────────────────── */
+.scrollTopBtn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(22, 24, 34, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.scrollTopBtn:hover {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: #22c55e;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .landingContainer {
+    padding: 90px 4% 30px;
+  }
+
+  .hubMarketCard {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .hubVisuals {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .codeMock {
+    width: 100%;
+  }
+
+  .whyInner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .viewlistCard {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .viewlistOpenBtn {
+    text-align: center;
+  }
+}
