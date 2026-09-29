@@ -141,3 +141,13 @@
   letter-spacing: 0.2px;
   opacity: 0.85;
 }
+
+@media (max-width: 640px) {
+  .card {
+    width: 135px;
+  }
+  .title {
+    font-size: 0.76rem;
+  }
+}
+

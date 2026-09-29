@@ -61,3 +61,16 @@
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
+
+@media (max-width: 768px) {
+  .section { padding: 12px 0 20px; }
+  .title { font-size: 1.05rem; }
+  .arrow { display: none; }
+  .row {
+    padding: 6px 4%;
+    gap: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .skeletonCard { width: 130px; }
+}
+

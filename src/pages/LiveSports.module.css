@@ -503,5 +503,51 @@
   border-color: rgba(234, 88, 12, 0.4) !important;
 }
 
-@media (max-width: 768px) { .card { flex: 0 0 170px; min-height: 150px; } }
+@media (max-width: 860px) {
+  .modalSplit { grid-template-columns: 1fr; }
+  .modalSidebar {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 45px 4% 25px; }
+  .heroTitle { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+  .heroSub { font-size: 0.88rem; }
+  .searchBar { margin-top: 18px; }
+  .sportBar { padding: 16px 4%; gap: 8px; }
+  .sportTab { padding: 7px 14px; font-size: 0.8rem; }
+  .card { flex: 0 0 155px; min-height: 135px; }
+  .matchCard { min-width: 280px; }
+  .main { padding: 0 4% 40px; gap: 28px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding-top: 68px; }
+  .hero { padding: 35px 3.5% 20px; }
+  .heroBadge { font-size: 0.68rem; padding: 4px 12px; }
+  .heroTitle { font-size: 1.65rem; }
+  .searchInput { font-size: 0.85rem; padding: 10px 36px 10px 40px; }
+  .searchIco { left: 14px; }
+  .clearBtn { right: 10px; }
+  .card { flex: 0 0 135px; min-height: 125px; padding: 12px; }
+  .cardLogo { width: 44px; height: 44px; }
+  .cardName { font-size: 0.82rem; }
+  .matchCard { min-width: 250px; padding: 12px; }
+
+  /* Modal on small phones */
+  .modalBackdrop { padding: 0; }
+  .modalBox {
+    border-radius: 0;
+    max-height: 100vh;
+    height: 100%;
+    border: none;
+  }
+  .modalHeader { padding: 10px 12px; }
+  .modalTitle { font-size: 0.86rem; }
+  .modalVideoWrap { min-height: 200px; }
+}
+
 

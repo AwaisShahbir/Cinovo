@@ -40,3 +40,23 @@
 }
 .empty span { font-size: 3rem; }
 .empty p { font-size: 1.1rem; }
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 3.5%;
+  }
+  .grid > * {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .grid {
+    gap: 8px;
+    padding: 0 2.5%;
+  }
+}
+

@@ -130,3 +130,16 @@
 .cardActive .label {
   color: #fff;
 }
+
+@media (max-width: 640px) {
+  .title { font-size: 1.05rem; }
+  .card {
+    width: 110px;
+    height: 78px;
+    padding: 8px 6px;
+    gap: 5px;
+  }
+  .logoWrap { height: 32px; }
+  .label { font-size: 0.68rem; }
+}
+

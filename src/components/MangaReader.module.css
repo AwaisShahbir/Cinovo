@@ -466,3 +466,28 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+@media (max-width: 640px) {
+  .topBar {
+    padding: 0 10px;
+    height: 48px;
+    gap: 8px;
+  }
+  .zoomLabel,
+  .topRight button:nth-child(2),
+  .topRight button:nth-child(3) {
+    display: none;
+  }
+  .mangaName {
+    font-size: 0.8rem;
+    max-width: 140px;
+  }
+  .drawer {
+    width: 85vw;
+    max-width: 320px;
+  }
+  .contentArea {
+    padding: 10px 4px 60px;
+  }
+}
+

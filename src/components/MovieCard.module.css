@@ -102,3 +102,16 @@
   margin-bottom: 2px;
 }
 .year { font-size: 0.74rem; color: rgba(255,255,255,0.45); }
+
+@media (max-width: 600px) {
+  .card { width: 130px; }
+  .playBtn { width: 44px; height: 44px; }
+  .moreBtn { padding: 4px 10px; font-size: 0.72rem; }
+  .title { font-size: 0.78rem; }
+  .year { font-size: 0.7rem; }
+}
+
+@media (max-width: 380px) {
+  .card { width: 118px; }
+}
+

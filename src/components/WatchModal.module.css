@@ -202,9 +202,87 @@
 .epActive { background: #e50914 !important; border-color: #e50914 !important; color: #fff !important; }
 .epsLoading { color: rgba(255,255,255,0.4); font-size: 0.84rem; padding: 10px 0; }
 
-@media (max-width: 600px) {
-  .detailBody { flex-direction: column; padding: 0 16px 24px; margin-top: -40px; }
-  .info { padding-top: 16px; }
-  .title { font-size: 1.3rem; }
-  .poster { width: 100px; }
+@media (max-width: 680px) {
+  .overlay { padding: 0; }
+  .modal {
+    max-height: 100vh;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+  }
+  .closeBtn {
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+  }
+  .detailBody {
+    flex-direction: column;
+    padding: 0 16px 24px;
+    margin-top: -50px;
+    gap: 16px;
+  }
+  .posterWrap {
+    display: flex;
+    justify-content: center;
+  }
+  .poster { width: 110px; }
+  .info { padding-top: 10px; }
+  .title { font-size: 1.35rem; }
+  .watchBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+  .prePicker {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .select { max-width: 100%; }
+
+  /* Player Mobile View */
+  .playerView {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .playerHeader {
+    padding: 8px 12px;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .playerTitle {
+    font-size: 0.84rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .serverTabs {
+    overflow-x: auto;
+    flex-shrink: 0;
+  }
+  .serverBtn {
+    padding: 4px 8px;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+  .iframeWrap {
+    min-height: 220px;
+    flex: 1;
+  }
+  .epControls {
+    padding: 10px 12px;
+  }
+  .episodeGrid {
+    max-height: 80px;
+  }
+  .adStripLeft, .adStripRight {
+    width: 25px;
+  }
+  .adStripTop, .adStripBottom {
+    height: 38px;
+  }
 }
+
