@@ -47,18 +47,16 @@ export default function App() {
         <footer className={styles.footer}>
           <div className={styles.footerInner}>
             <div className={styles.footerLogo}>
-              <svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{display:'inline-block', verticalAlign:'middle', marginRight:'8px'}}>
-                <defs><linearGradient id="ftCg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#7B2FBE"/><stop offset="100%" stopColor="#E50914"/></linearGradient></defs>
-                <rect width="64" height="64" rx="14" fill="#0d0d0d"/>
-                <path d="M44 17 A18 18 0 1 0 44 47" stroke="url(#ftCg)" strokeWidth="7" strokeLinecap="round" fill="none"/>
-                <polygon points="39,32 34,27 34,37" fill="url(#ftCg)" opacity="0.9"/>
+              <svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                <defs><linearGradient id="ftCg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#7B2FBE" /><stop offset="100%" stopColor="#E50914" /></linearGradient></defs>
+                <rect width="64" height="64" rx="14" fill="#0d0d0d" />
+                <path d="M44 17 A18 18 0 1 0 44 47" stroke="url(#ftCg)" strokeWidth="7" strokeLinecap="round" fill="none" />
+                <polygon points="39,32 34,27 34,37" fill="url(#ftCg)" opacity="0.9" />
               </svg>
-              <span style={{background:'linear-gradient(135deg,#7B2FBE,#E50914)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text'}}>C</span>inovo
+              <span style={{ background: 'linear-gradient(135deg,#7B2FBE,#E50914)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>C</span>inovo
             </div>
-            <p className={styles.footerNote}>
-              For educational &amp; personal use only · Content via third-party embed providers
-            </p>
-            <p className={styles.footerCopy}>© 2024 Cinovo — University Project</p>
+
+            <p className={styles.footerCopy}>© 2026 Cinovo</p>
           </div>
         </footer>
 
