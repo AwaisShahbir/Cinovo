@@ -23,12 +23,17 @@
   background: #1a1a2e;
 }
 .img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 .noPoster {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: flex;

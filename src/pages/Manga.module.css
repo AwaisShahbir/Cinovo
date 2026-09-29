@@ -195,6 +195,11 @@
   .mangaTitle { font-size: 1.55rem; }
   .poweredBy { display: none; }
   .searchBar { max-width: 100%; }
+  .chipManga {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    border-radius: 18px;
+  }
   .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
